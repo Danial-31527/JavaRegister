@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <title>User Dashboard</title>
+  <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 20px;
+        text-align:center;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    .container{
+      width: 500px;
+    height: auto;
+    background-color: #f3f3f7;
+    border-radius: 20px ;
+    box-shadow: 0 10px 15px(0,0,0, .4);
+    padding: 2em 0 1em 0;
+    text-align: center;
+    border: 3px solid #000
+    }
+    h2 {
+        color: #000;
+
+        background-color:e86100;
+        padding:15px
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: #e86100;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .logout-btn {
+        color: red;
+        cursor: pointer;
+    }
+
+    .logout-btn:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Welcome to User Dashboard</h2>
+
+  <div class="user-info">
+    <p>Logged as: <span sec:authentication="name"></span></p>
+    <p>Has role: <span sec:authentication="authorities"></span></p>
+  </div>
+
+  <div class="dashboard-links">
+    <p><a th:href="@{/}">Home</a></p>
+    <p class="logout-btn"><a th:href="@{/logout}">Log out</a></p>
+  </div>
+
+</div>
+</body>
+</html>
