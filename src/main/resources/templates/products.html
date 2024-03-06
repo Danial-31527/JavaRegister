@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/static/css/dodo.css">
+    <title>Dodopizza</title>
+</head>
+<body>
+<header>
+    <div class="header1">
+        <div class="lang"><img src="bx-globe.svg"></img>
+            Language
+        </div>
+        <nav>
+            <a href="#" class="nav">Прямой эфир</a>
+            <a href="#" class="nav">Франшиза</a>
+            <a href="#" class="nav">О нас</a>
+            <a href="#" class="nav">Контакты</a>
+        </nav>
+    </div>
+    <div class="header2">
+        <img class="logo" src="logododo.png" alt="aa">
+        <div class="dost">
+            <p class="text1">Доставка пиццы</p>
+            <p class="text2">Казахстан</p>
+        </div>
+        <div class="right">
+            <div class="icon" href="#"> <img src="bx-bitcoin.svg" alt="bb">
+                Dodokoin</div>
+            <button class="sign" id="openlogin" >Войти</button>
+        </div>
+
+    </div>
+    <div class="menu">
+        <div class="header3">
+            <nav class="nav2">
+                <a href="#piz" class="nav2">Пицца</a>
+                <a href="#com" class="nav2" >Комбо</a>
+                <a href="#zak"class="nav2">Закуски</a>
+                <a href="#des" class="nav2">Десерты</a>
+                <a href="#sus" class="nav2">Напитки</a>
+                <a href="#dru" class="nav2"> Другие товары</a>
+                <a href="#aks" class="nav2">Акции</a>
+            </nav>
+            <a class="korzina" href="file:///C:/Users/user/Documents/
+                    2%20%D0%9A%D0%A3%D0%A0%D0%A1/TI/prof.html" target="_blank">
+                Корзина</a>
+        </div>
+    </div>
+</header>
+
+<section class="section1">
+    <div class="boxs">
+        <a href="#" class="box1" id=zoro>
+            <img class="sale"  src="box1in.png" alt="">
+        </a>
+        <a href="box2.png" class="box1">
+            <img class="sale" src="box2in.png" alt="">
+        </a>
+        <a href="#" class="box1">
+            <img class="sale" src="box3in.png" alt="">
+        </a>
+        <a href="#" class="box1">
+            <img class="sale" src="i.webp" alt="">
+        </a>
+        <a href="#" class="box1">
+            <img class="sale" src="box5.png" alt="">
+        </a>
+        <a href="#" class="box1">
+            <img class="sale" src="box6in.png" alt="">
+        </a>
+    </div>
+    <h1 class="rec">Часто заказывают</h1>
+    <#list products as product>
+    <div class="recs">
+        <div class="rec1">
+            <div class="recin">
+                <img href="#com" class="photo1" src="pizza1.webp" alt="11">
+                <h2 class="name2" >${product.title}</h2>
+                <h3 class="price2">${product.price} тг</h3>
+                <a class="addbtn" href="/product/${product.id}">More..</a>
+            </div>
+            <form action="/product/update/${product.id}"
+                  method="get" style="display: inline;">
+                <input type="submit" value="Изменить">
+            </form>
+        </div>
+    </div>
+</section>
+</#list>
+<hr>
+<h3>Добавить новое блюдо</h3>
+<form action="/product/create" method="post">
+    Title: <input type="text" name="title"/><br>
+    Description: <input type="text" name="description"/><br>
+    Price: <input type="number" name="price"/><br>
+    Author: <input type="text" name="author"/>
+    <input  type="submit" value="Добавить"/>
+</form>
+</body>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: fffff;
+    padding: 0 80px;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+
+.header1{
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.nav{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 15px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+    font-weight: 600;
+}
+.nav:hover{
+    color: #e86100;
+}
+.lang{
+    font-size: 30px;
+}
+
+.header2{
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: space-between;
+}
+
+.dost{
+    display: flex;
+    align-items: center;
+}
+.text1{
+    font-size: 24px;
+    margin: 8px;
+}
+.text2{
+    font-size: 24px;
+    color: #e86100;
+}
+.icon{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 15px;
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+}
+.icon:hover{
+    color: #e86100;
+    font-size: 25px;
+}
+.sign{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight:700 ;
+    border: 3px solid  #000;
+    background-color:#f3f3f7 ;
+    color: #494949;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+
+.sign:hover{
+    color: #e86100;
+    background-color: black;
+}
+.header3{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    justify-content: space-between;
+}
+.nav2{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.icon::after{
+    color: #e86100;
+}
+.nav2:hover{
+    color: #e86100;
+    font-size: 18px;
+}
+
+.korzina{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight:700 ;
+    background-color:#e86100 ;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.korzina:hover{
+    color:yellow
+}
+/* .menu{
+
+} */
+
+
+
+.section1{
+    padding-top: 25px;
+}
+
+.boxs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box1{
+    width: 200px;
+    height: 280px;
+    border-radius: 30px;
+    border: 3px solid #e86100;
+    display: block;
+    overflow: hidden;
+}
+
+
+
+.box1 img{
+    z-index: 2;
+    width: 100%;
+    height: 140%;
+    max-height: 100%;
+    box-sizing: border-box;
+
+}
+
+/* .sale{
+
+
+} */
+
+.rec{
+    padding-top: 30px;
+    font-size: 30px;
+}
+
+.recs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.rec1 {
+    width: calc(25% - 30px); /* 25% для 4 блоков в ряду и учитываем отступы */
+    height: 120px;
+    border-radius: 20px;
+    box-shadow: 2px 3px 3px 3px #f8f7f7;
+    flex: 1 0 calc(25% - 30px); /* Равномерное распределение по горизонтали */
+}
+
+
+.recin{
+    padding-bottom: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.name2{
+    justify-content: start;
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 620;
+}
+.price2{
+    justify-content: start;
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 620;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.photo1{
+    width: 35%;
+}
+
+hr{
+    padding-top:50px;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+.addbtn{
+    background-color: #209de0;
+    box-shadow: 0 .5px 0.5 .8px #494949;
+    transition: .5s;
+    padding:3px 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.addbtn:hover{
+    background-color: #e86100;
+    color:#f3f3f7;
+}
+
+
+
+
+
+
+
+
+
+
+.pizza{
+    padding-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pizza1{
+    width: 310px;
+    height: 480px;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.img1{
+    width: 94%;
+}
+.img1:hover{
+    width: 98%;
+}
+
+.ast{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.name1{
+    font-size: 22px;
+    font-weight: 550;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.recept1{
+    font-size: 14px;
+    color: #494949;
+    font-weight: 450;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.price1{
+    font-size: 20px;
+    color: #000000;
+    font-weight: 620;
+}
+.select{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight:700 ;
+    background-color:#ffd2b3 ;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.select:hover{
+    background-color: #e86100   ;
+}
+    </style>
+</html>
