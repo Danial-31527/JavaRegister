@@ -25,17 +25,17 @@ public class CustomLoginSucessHandler extends SimpleUrlAuthenticationSuccessHand
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(Authentication authentication){
+    protected String determineTargetUrl(Authentication authentication) {
         String url = "/login?error=true";
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        List<String> roles = new ArrayList<String>();
-        for(GrantedAuthority a : authorities){
+        List<String> roles = new ArrayList<>();
+        for (GrantedAuthority a : authorities) {
             roles.add(a.getAuthority());
         }
-        if(roles.contains("ADMIN")){
+        if (roles.contains("ADMIN")) {
             url = "/admin/dashboard";
-        }else if(roles.contains("USER")) {
-            url = "/dashboard";
+        } else if (roles.contains("USER")) {
+            url = "/main-page";
         }
         return url;
     }

@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void saveUser(User user) {
         String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-//        user.setRole(Role.USER);
         userRepository.save(user);
     }
 
@@ -47,7 +46,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if (existingUserEmail.isPresent() && existingUserMobile.isPresent()) {
             message = "Email and Mobile Number Both Already Present!";
         }
-        System.out.println("existingUserEmail.isPresent() - "+existingUserEmail.isPresent()+"existingUserMobile.isPresent() - "+existingUserMobile.isPresent());
+        System.out.println("existingUserEmail.isPresent() - " + existingUserEmail.isPresent() +
+                "existingUserMobile.isPresent() - " + existingUserMobile.isPresent());
         return Arrays.asList(userExists, message);
     }
 
@@ -57,5 +57,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 ()-> new UsernameNotFoundException(
                         String.format("USER_NOT_FOUND", email)
                 ));
+    }
+
+    @Override
+    public User findByFirstName(String firstName) {
+        return userRepository.findByFirstName(firstName).orElse(null);
     }
 }

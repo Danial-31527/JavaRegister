@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Profil</title>
+    <!-- Подключение вашего CSS-файла -->
+    <style>
+
+    *{
+    margin: 0;
+    padding: 0;
+}*
+    body{
+        background-color: #112d32;
+        color: #efe1d4;
+    }
+
+    .header-main{
+        visibility: 9999;
+        position: fixed;
+        border-bottom: 1px solid #5d5d5d    ;
+    }
+
+    .head-inner{
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 260px;
+        background-color: #23444b ;
+        width: 1900px;
+        .header-left{
+            display: flex;
+            img, input,h5{
+                margin-left: 5px
+            };
+        }
+
+    }
+    .header-left h2{
+        margin-right: 106px ;
+    }
+
+    .header-left h5{
+        font-size:27px;
+        color: #efe1d4;
+        font-style:italic;
+    }
+    .header-inner img{
+        visibility: 55556;
+        width:30px ;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .header-left input{
+        border-radius: 12px;
+        background-color: #112d32;
+        color: #fff;
+        padding: 5px 15px;
+    }
+    h2{
+        color: #efe1d4;
+        font: 32px bold 900;
+    }
+    aside{
+        max-width: 240px;
+        width: 240px;
+        margin-right:10px;
+        nav ul{
+            list-style: none;
+        }
+
+    }
+
+    aside nav ul li{
+        width: 100%;
+        padding: 10px 0;
+        transition: .3s;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    aside nav ul li a{
+        color: #efe1d4;
+        text-decoration: none;
+        margin-left:10px ;
+    }
+    aside nav ul li:hover{
+        background-color: #23444a;
+
+    }
+
+    main{
+        display: flex;
+        padding: 65px 260px;
+    }
+
+    .content{
+        max-width: 100%;
+        width: 800px;
+    }
+    .news-header{
+        color: #efe1d4;
+        background-color: #23444b;
+        padding: 15px;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        h1{
+            font-size: 32px;
+        }
+    }
+    .profil{
+        max-width: 100%;
+        width: 800px;
+    }
+    .profil-inner{
+        display: flex;
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #23444b;
+        width: 100%;
+        height: 220px;
+    }
+    .prof-ava{
+        margin-left: 10px;
+        max-width: 150px;
+        max-width: 200px;
+    }
+
+    .prof-info{
+        margin:10px 20px;
+        list-style: none;
+        li{
+            margin: 15px 15px;
+        }
+        span,b{
+            font-size: 28px;
+        }
+    }
+    .prof-about{
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #23444b;
+        max-width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+<div>
+    <header class="header-main">
+        <div class='head-inner'>
+            <div class  ="header-left">
+                <h2>Blogstan</h2>
+                <input type="search" placeholder="Поиск" />
+                <img src="" alt="" class="saved" />
+                <h5>Создай свой блог с нами</h5>
+            </div>
+        </div>
+    </header>
+    <main>
+        <aside>
+            <nav>
+                <ul>
+                    <li th:class="${currentPage == 'main' ? 'active' : ''}">
+                        <a th:href="@{/main-page}">Главная</a>
+                    </li>
+                    <li th:class="${currentPage == 'profil' ? 'active' : ''}">
+                        <a th:href="@{/profil}">Моя страница</a>
+                    </li>
+                    <li th:class="${currentPage == 'myblog' ? 'active' : ''}">
+                        <a th:href="@{/myblog}">Мой блог</a>
+                    </li>
+                    <li >
+                        <a>Блогеры</a>
+                    </li>
+                    <li>
+                        <a>Рекомендации</a>
+                    </li>
+                    <li>
+                        <a>Понравшие</a>
+                    </li>
+                    <li>
+                        <a>Черный список</a>
+                    </li>
+                    <li>
+                        <a>Закладки</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="content">
+        <section class="profil">
+        <div class="news-header">
+            <h1>Мой профиль</h1>
+        </div>
+        <div class="profil-inner">
+            <ul class="prof-info">
+                <li>
+                    <span>name: </span>
+                    <b>Danial</b>
+                </li>
+                <li>
+                    <span>surname: </span>
+                    <b>Abibulla</b>
+                </li>
+                <li>
+                    <span>number: </span>
+                    <b>8707121111</b>
+                </li>
+                <li>
+                    <span>group: </span>
+                    <b>IT2-2114</b>
+                </li>
+            </ul>
+        </div>
+        <div class="prof-about">
+            <h2>Всем Привет!</h2>
+            <p>Привет! Я тот парень, который верит в силу позитивного влияния и добрых поступков. В моем мире важны уважение, доверие и поддержка. Я стараюсь быть тем, кто делает людей вокруг счастливее, внося радость и позитив в их жизни. Моя жизненная философия - это стремление к росту, как личностному, так и профессиональному. Я открыт для новых идей, готов извлекать уроки из жизненных ситуаций и стремлюсь к тому, чтобы быть лучшей версией себя.</p>
+        </div>
+    </section>
+        </div>
+    </main>
+</body>
+</html>

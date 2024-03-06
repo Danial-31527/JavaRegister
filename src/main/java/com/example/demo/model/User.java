@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 
 @Entity
@@ -69,6 +70,11 @@ public class User implements UserDetails  {
     @Column(name = "enabled")
     private Boolean enabled = true;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Blog> blogs;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());

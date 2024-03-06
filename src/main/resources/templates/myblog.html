@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Myblog</title>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    }*
+    body{
+    background-color: #112d32;
+    color: #efe1d4;
+    }
+
+    .header-main{
+    visibility: 9999;
+    position: fixed;
+    border-bottom: 1px solid #5d5d5d    ;
+    }
+
+    .head-inner{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 260px;
+    background-color: #23444b ;
+    width: 1900px;
+    .header-left{
+    display: flex;
+    img, input,h5{
+    margin-left: 5px
+    };
+    }
+
+    }
+    .header-left h2{
+    margin-right: 106px ;
+    }
+
+    .header-left h5{
+    font-size:27px;
+    color: #efe1d4;
+    font-style:italic;
+    }
+    .header-inner img{
+    visibility: 55556;
+    width:30px ;
+    height: 30px;
+    border-radius: 50%;
+    }
+
+    .header-left input{
+    border-radius: 12px;
+    background-color: #112d32;
+    color: #fff;
+    padding: 5px 15px;
+    }
+    h2{
+    color: #efe1d4;
+    font: 32px bold 900;
+    }
+    aside{
+    max-width: 240px;
+    width: 240px;
+    margin-right:10px;
+    nav ul{
+    list-style: none;
+    }
+
+    }
+
+    aside nav ul li{
+    width: 100%;
+    padding: 10px 0;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    }
+
+    aside nav ul li a{
+    color: #efe1d4;
+    text-decoration: none;
+    margin-left:10px ;
+    }
+    aside nav ul li:hover{
+    background-color: #23444a;
+
+    }
+
+    main{
+    display: flex;
+    padding: 65px 260px;
+    }
+
+    .content{
+    max-width: 100%;
+    width: 800px;
+    }
+    .news-header{
+    color: #efe1d4;
+    background-color: #23444b;
+    padding: 15px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    h1{
+    font-size: 32px;
+    }
+    }
+    .news-header img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50% ;
+    margin: 0 15px 0 0px;
+    }
+
+    .blog{
+    margin-top: 20px;
+    border-radius: 15px;
+    background-color: #23444b;
+    width: 100%;
+    height: auto;
+    }
+    .blog-header{
+    display: flex;
+    align-items: center;
+    padding: 2% ;
+    .ava{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    }
+    .blog-name{
+    font-size: 24px;
+    margin: 5px;
+    color: #efe1d4;
+    }
+    .myblog{
+    .news-header{
+        display: flex;
+        justify-content: space-between;
+        div{
+            display: flex;
+        }
+    }
+}
+.create-btn{
+    background-color: #112d32;
+    max-width: 120px;
+    border-radius: 50%;
+    span{
+        padding: 20px;
+        font-size: 50px;
+        font-weight: 9000;
+    }
+}
+.blog-content{
+    input{
+        padding: 5px;
+        background-color: #112d32;
+        border-radius: 15px;
+        color: #efe1d4;
+        width: 90%;
+    }
+    button{
+        border: #efe1d4 6px solid 5px;
+        background-color: #112d32;
+        color: #efe1d4;
+        cursor: pointer;
+        font-size: 14px ;
+        font-weight: 800;
+        padding: 10px;
+        border-radius: 35px;
+        margin: 10px 0;
+    }
+    button:active{
+        background-color: salmon;
+    }
+}
+.delete{
+    border-radius:50%;
+    background: #112d32;
+    h4{
+        font-size:22px;
+        color:#fff;
+        padding: 1px 12px;
+    }
+}
+.delete:active{
+    background-color: red;
+}
+form{
+    input{
+        width:100%;
+        background-color: #112d32;
+        color: white;
+    }
+}
+
+</style>
+</head>
+<body>
+<div>
+    <header class="header-main">
+        <div class='head-inner'>
+            <div class="header-left">
+                <h2>Blogstan</h2>
+                <input type="search" placeholder="Поиск" />
+                <img src="/path/to/image.jpg" alt="Saved" class="saved" />
+                <h5>Создай свой блог с нами</h5>
+            </div>
+        </div>
+    </header>
+    <main>
+        <aside>
+            <nav>
+                <ul>
+                    <li class="${currentPage == 'main' ? 'active' : ''}">
+                        <a href="/main-page">Главная</a>
+                    </li>
+                    <li class="${currentPage == 'profil' ? 'active' : ''}">
+                        <a href="/profil">Моя страница</a>
+                    </li>
+                    <li class="${currentPage == 'myblog' ? 'active' : ''}">
+                        <a href="/myblog">Мой блог</a>
+                    </li>
+                    <li>
+                        <a>Блогеры</a>
+                    </li>
+                    <li>
+                        <a>Рекомендации</a>
+                    </li>
+                    <li>
+                        <a>Понравшие</a>
+                    </li>
+                    <li>
+                        <a>Черный список</a>
+                    </li>
+                    <li>
+                        <a>Закладки</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <div class="content">
+            <div class="news-header">
+                <h1>Мой блог</h1>
+            </div>
+            <section class="blog">
+                <div class="blog-header">
+                    <h4 class="blog-name">Danial Abibulla</h4>
+                    <button class="delete"><h4>X</h4></button>
+                </div>
+                <form class="blog-content" method="POST" action="/create-blog">
+                    <input type="text" name="title" placeholder="Что хотите писать?" />
+                    <textarea name="description" placeholder="Описание"></textarea>
+                    <button type="submit">Создать блог</button>
+                </form>
+            </section>
+        </div>
+    </main>
+</div>
+</body>

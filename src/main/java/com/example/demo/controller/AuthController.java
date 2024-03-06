@@ -39,13 +39,12 @@ public class AuthController {
         if((Boolean) userPresentObj.get(0)){
             model.addAttribute("successMessage", userPresentObj.get(1));
             return "auth/register";
-
-
         }
 
         userService.saveUser(user);
         model.addAttribute("successMessage", "User registered successfully!");
 
-        return "auth/login";
+        // После успешной регистрации перенаправляем пользователя на main-page
+        return "redirect:/main-page";
     }
 }
